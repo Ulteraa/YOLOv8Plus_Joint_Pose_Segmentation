@@ -1,0 +1,16 @@
+train: /home/fariborz_taherkhani/Joint_Pose_Segment_Yolo-master/DataSet/train
+
+val: /home/fariborz_taherkhani/Joint_Pose_Segment_Yolo-master/DataSet/test
+
+test: /home/fariborz_taherkhani/Joint_Pose_Segment_Yolo-master/DataSet/test
+
+
+nc: 1  # number of classes
+names: ['person']  # list of class names
+
+kpt_shape: [17, 3]  # number of keypoints, number of dims (2 for x,y or 3 for x,y,visible)
+#flip_idx: [0]
+flip_idx: [0, 2, 1, 4, 3, 6, 5, 8, 7, 10, 9, 12, 11, 14, 13, 16, 15]
+
+
+
