@@ -341,7 +341,10 @@ class PoseSegment(Detect):
         else:
             pred_kpt = self.kpts_decode(bs, kpt)
             #print('shape of the prot', p.shape)
-            return [(torch.cat([x, mc], 1), p), torch.cat([x, pred_kpt], 1)] if self.export else  [(torch.cat([x[0], mc], 1), (x[1], mc, p)), (torch.cat([x[0], pred_kpt], 1), (x[1], kpt))]
+            #return [(torch.cat([x, mc], 1), p), torch.cat([x, pred_kpt], 1)] if self.export else [(torch.cat([x[0], mc], 1), (x[1], mc, p)), (torch.cat([x[0], pred_kpt], 1), (x[1], kpt))]
+            return ((torch.cat([x, mc], 1), p) , torch.cat([x, pred_kpt], 1)) if self.export else  [(torch.cat([x[0], mc], 1), (x[1], mc, p)), (torch.cat([x[0], pred_kpt], 1), (x[1], kpt))]
+
+            #return [(torch.cat([x, mc], 1), p), torch.cat([x, pred_kpt], 1)] if self.export else  [(torch.cat([x[0], mc], 1), (x[1], mc, p)), (torch.cat([x[0], pred_kpt], 1), (x[1], kpt))]
     def kpts_decode(self, bs, kpts):
         """Decodes keypoints."""
         ndim = self.kpt_shape[1]

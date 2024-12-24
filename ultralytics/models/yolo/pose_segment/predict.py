@@ -31,8 +31,15 @@ class PoseSegmentPredictor(DetectionPredictor):
             )
 
     def postprocess(self, preds, img, orig_imgs):
+        # for conversion I did follwing changes
+        if len(preds)==3:
+            a, b, preds_pose =  preds
+            preds_seg =(a,b)
+        else:
+            preds_seg, preds_pose = preds
 
-        preds_seg, preds_pose = preds
+        # it Was like this for training
+        # preds_seg, preds_pose = preds
         """Apply non-maximum suppression and return detections with high confidence scores."""
         p_pose = ops.non_max_suppression(
             preds_pose,
@@ -85,9 +92,13 @@ class PoseSegmentPredictor(DetectionPredictor):
 
                     pred_p[:, :4] = ops.scale_boxes(img.shape[2:], pred_p[:, :4], orig_img.shape).round()
                     # !!!!! important Note !!!!! this line of the code should change to following when dealing with model conversion
-                    #pred_kpts = pred_p[:, 6:].view(len(pred_p), *self.model.kpt_shape) if len(pred_p) else pred_p[:, 6:]
-                    pred_kpts = pred_p[:, 6:].view(len(pred_p), *self.model.model.yaml['kpt_shape']) if len(pred_p) else pred_p[:, 6:]
+                    pred_kpts = pred_p[:, 6:].view(len(pred_p), *self.model.kpt_shape) if len(pred_p) else pred_p[:, 6:]
+                    # uncomment follwing two lines for conversion and comment the above line but for the training it is the other way around
+                    # pred_kpts = pred_p[:, 6:].view(len(pred_p), *self.model.model.yaml['kpt_shape']) if len(pred_p) else pred_p[:, 6:]
                     pred_kpts = ops.scale_coords(img.shape[2:], pred_kpts, orig_img.shape)
+
+
+
                     # results.append(
                     #     Results(orig_img, path=img_path, names=self.model.names, boxes=pred_p[:, :6], keypoints=pred_kpts)
                     # )
