@@ -1,6 +1,19 @@
 # Documentation: YOLOv8+: A Unified Framework for Joint Pose Estimation and Instance Segmentation
 
+# For PDF documentation and detailed results, please refer to the latest version (v3) available via the DOI link on Zenodo, as provided here
+
 [![DOI](https://zenodo.org/badge/902589803.svg)](https://doi.org/10.5281/zenodo.14630283)
+
+
+
+
+
+
+
+
+
+
+
 
 
 Format of the each annoted object is as follows:
