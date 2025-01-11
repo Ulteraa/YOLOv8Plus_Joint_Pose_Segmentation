@@ -2,7 +2,8 @@
 
 # For PDF documentation and detailed results, please refer to the latest version (v3) available via the DOI link on Zenodo, as provided here
 
-[![DOI](https://zenodo.org/badge/902589803.svg)](https://doi.org/10.5281/zenodo.14630283)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14630612.svg)](https://doi.org/10.5281/zenodo.14630612)
+
 
 
 
